@@ -91,6 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onChanged: (bool? value) {
                 setState(() {
                   getter.isChecked = value!;
+                  box.put(getter.key, getter);
                 });
               },
               secondary: IconButton(
