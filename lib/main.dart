@@ -59,6 +59,14 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  onCheckChange(bool? value, int index){
+    setState(() {
+      Todo todo = box.getAt(index);
+      todo.isChecked = value!;
+      box.put(todo.key, todo);
+    });
+  }
+
   final List<int> ColorCodes = <int>[400, 500, 600, 200, 100];
 
   @override
@@ -89,10 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               value: getter.isChecked,
               onChanged: (bool? value) {
-                setState(() {
-                  getter.isChecked = value!;
-                  box.put(getter.key, getter);
-                });
+                  onCheckChange(value, index);
               },
               secondary: IconButton(
                 onPressed: () {
