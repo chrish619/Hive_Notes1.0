@@ -78,7 +78,9 @@ class _MyHomePageState extends State<MyHomePage> {
           var getter = box.getAt(index);
 
           return Card(
-            color: Colors.green[ColorCodes[index]],
+            // % is a modulus, or remainder operation - the ColorCodes can only be indexed to the `List.Length - 1`, e.g. 0->4
+            // n % 5, will never be greater than 4
+            color: Colors.green[ColorCodes[index%ColorCodes.length]], 
             child: CheckboxListTile(
               title: Text(
                 getter.name,
