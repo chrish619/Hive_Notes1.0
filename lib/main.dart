@@ -53,15 +53,14 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  onDelete(int index) {
+  onDelete(Todo todo) {
     setState(() {
-      box.deleteAt(index);
+      box.delete(todo.key);
     });
   }
 
-  onCheckChange(bool? value, int index){
+  onCheckChange(bool? value, Todo todo){
     setState(() {
-      Todo todo = box.getAt(index);
       todo.isChecked = value!;
       box.put(todo.key, todo);
     });
@@ -97,11 +96,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               value: getter.isChecked,
               onChanged: (bool? value) {
-                  onCheckChange(value, index);
+                  onCheckChange(value, getter);
               },
               secondary: IconButton(
                 onPressed: () {
-                  onDelete(index);
+                  onDelete(getter);
                 },
                 icon: Icon(Icons.delete),
               ),
