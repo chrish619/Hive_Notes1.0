@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: ListView.builder(
         itemCount: box.length,
         itemBuilder: (context, index) {
-          var getter = box.getAt(index);
+          Todo getter = box.getAt(index);
 
           return Card(
             color: Colors.green[ColorCodes[index]],
